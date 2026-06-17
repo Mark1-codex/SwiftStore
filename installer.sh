@@ -51,8 +51,13 @@ pip install rapidfuzz keyboard
 
 echo "Creating launcher /usr/bin/swiftstore..."
 touch /usr/bin/swiftstore
-echo "#!/bin/bash" > /usr/bin/swiftstore
-echo "sudo -E $INSTALL_DIR/venv/bin/python $INSTALL_DIR/main.py"  > /usr/bin/swiftstore
+sudo tee /usr/bin/swiftstore > /dev/null << 'EOF'
+#!/bin/bash
+sudo -E /opt/swiftstore/venv/bin/python /opt/swiftstore/main.py "$@"
+EOF
+
+
+sudo chmod +x /usr/bin/swiftstore
 
 INSTALL_DIR="/opt/swiftstore"
 
@@ -63,11 +68,6 @@ fi
 
 cd "$INSTALL_DIR"
 source venv/bin/activate
-exec python main.py "$@"
-EOF
-
-chmod +x /usr/bin/swiftstore
-sudo chown $USER /usr/bin/swiftstore
 
 echo ""
 echo "=========================================="
