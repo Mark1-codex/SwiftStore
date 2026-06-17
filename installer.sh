@@ -50,8 +50,9 @@ echo "Installing Python dependencies..."
 pip install rapidfuzz keyboard
 
 echo "Creating launcher /usr/bin/swiftstore..."
-cat > /usr/bin/swiftstore << 'EOF'
-#!/bin/bash
+touch /usr/bin/swiftstore
+echo "#!/bin/bash" > /usr/bin/swiftstore
+echo "sudo -E $INSTALL_DIR/venv/bin/python $INSTALL_DIR/main.py"  > /usr/bin/swiftstore
 # SwiftStore launcher
 
 INSTALL_DIR="/opt/swiftstore"
