@@ -18,6 +18,7 @@ Fast, minimal, and powerful — remastered from VaultTUI.
 
 ```bash
 curl -fsSL https://raw.githubusercontent.com/Mark1-codex/SwiftStore/main/installer.sh | sudo bash
+```  
 After installation, launch it anytime with:  
 ```swiftstore```  
 
