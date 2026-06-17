@@ -3,26 +3,21 @@
 A lightweight, keyboard-driven **Terminal User Interface (TUI)** file manager for Linux.  
 Fast, minimal, and powerful — remastered from VaultTUI.
 
-![SwiftStore](https://raw.githubusercontent.com/Mark1-codex/SwiftStore/main/logo.py)  
+## Features
 
-# Features  
+- Blazing-fast navigation with arrow keys
+- Multi-selection with **Space**
+- Built-in file editing (opens in `nano`)
+- Create files and folders
+- Copy, Move, Rename, Delete
+- Fuzzy search (powered by `rapidfuzz`)
+- Automatic permission handling
+- Easy one-command installer
 
-- Blazing-fast navigation with arrow keys  
-- Multi-selection with **Space**  
-- Built-in file editing (opens in `nano`)  
-- Create files/folders  
-- Copy, Move, Rename, Delete  
-- Fuzzy search across files (powered by  `rapidfuzz`)  
-- Automatic permission handling  
-- Easy one-command installer  
-
-# Installation
+## Installation
 
 ```bash
-git clone https://github.com/Mark1-codex/SwiftStore.git
-cd SwiftStore
-sudo ./installer.sh
-```  
+curl -fsSL https://raw.githubusercontent.com/Mark1-codex/SwiftStore/main/installer.sh | sudo bash
 After installation, launch it anytime with:  
 ```swiftstore```  
 
