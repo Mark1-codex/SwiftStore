@@ -53,7 +53,6 @@ echo "Creating launcher /usr/bin/swiftstore..."
 touch /usr/bin/swiftstore
 echo "#!/bin/bash" > /usr/bin/swiftstore
 echo "sudo -E $INSTALL_DIR/venv/bin/python $INSTALL_DIR/main.py"  > /usr/bin/swiftstore
-# SwiftStore launcher
 
 INSTALL_DIR="/opt/swiftstore"
 
@@ -68,7 +67,7 @@ exec python main.py "$@"
 EOF
 
 chmod +x /usr/bin/swiftstore
-
+sudo chown $USER /usr/bin/swiftstore
 
 echo ""
 echo "=========================================="
@@ -94,4 +93,4 @@ echo "  Ctrl+M       - Move"
 echo "  Ctrl+R       - Rename"
 echo "  Ctrl+F       - Search"
 echo ""
-echo "To uninstall later: sudo rm -rf /opt/swiftstore /usr/bin/swiftstore"
+echo "To uninstall later: /opt/swiftstore/uninstall.sh"
