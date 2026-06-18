@@ -1,12 +1,14 @@
+import sys
 try:
     import os
     from pathlib import Path
     from rapidfuzz import process, fuzz
     import keyboard as kb
     import time
-    import sys
+    
     import termios
     import pwd
+    import cv2
 
     sf = Path.home()
     sfi = os.listdir(sf)
@@ -106,8 +108,7 @@ try:
             kb.unhook_all()
             os.system(f"nano '{target}'")
             rehook()
-            update()
-
+            update()    
     def delete_item():
         global sf, citem, sfi, selected_items
         kb.unhook_all()
@@ -229,7 +230,7 @@ try:
         kb.unhook_all()
         time.sleep(0.2)
         clear_buffer()
-        os.system("clear")
+        print("==========================")
         update()
         browsepath = input("Enter the path to browse files in: ")
         if not Path(browsepath).is_dir:
@@ -242,6 +243,15 @@ try:
             except FileNotFoundError:
                 print("==========================")
                 print("No such directory found. Press shift+enter to return to file browsing.")
+
+    def openterm():
+        kb.unhook_all()
+        time.sleep(0.2)
+        clear_buffer()
+        print("==========================")
+        os.system("/opt/swiftstore/term")
+        print("==========================")
+        print("Press shift+enter to return to file browsing.")
 
     def rehook():
         kb.add_hotkey("shift+enter", lambda: update())
