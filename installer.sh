@@ -60,12 +60,28 @@ pip install rapidfuzz keyboard
 
 echo "Creating launcher /usr/bin/swiftstore..."
 touch /usr/bin/swiftstore
+touch /usr/bin/swiftstore-uninstall
+touch /usr/bin/swiftstore-update
 sudo tee /usr/bin/swiftstore > /dev/null << 'EOF'
 #!/bin/bash
 sudo -E /opt/swiftstore/venv/bin/python /opt/swiftstore/main.py "$@"
 EOF
+sudo tee /usr/bin/swiftstore-uninstall > /dev/null << 'EOF'
+#!/bin/bash
+echo "Uninstalling SwiftStore..."
+sudo rm -rf /opt/swiftstore /usr/bin/swiftstore /usr/bin/swiftstore-uninstall /usr/bin/swiftstore-update "$@"
+echo "Uninstalled SwiftStore successfully!"
+EOF
+sudo tee /usr/bin/swiftstore-update > /dev/null << 'EOF'
+#!/bin/bash
+echo "Updating SwiftStore..."
+sudo rm -rf /usr/bin/swiftstore-uninstall /usr/bin/swiftstore-update /usr/bin/swiftstore /opt/swiftstore
+curl -fsSL https://raw.githubusercontent.com/Mark1-codex/SwiftStore/main/installer.sh | sudo bash
+EOF
 
 sudo chmod +x /usr/bin/swiftstore
+sudo chmod +x /usr/bin/swiftstore-uninstall
+sudo chmod +x /usr/bin/swiftstore-update
 
 if [ ! -d "$INSTALL_DIR/venv" ]; then
     echo "Error: SwiftStore is not properly installed."
@@ -91,6 +107,7 @@ echo "Launcher: /usr/bin/swiftstore"
 echo ""
 echo "Hotkeys:"
 echo "  ↑/↓          - Navigate"
+echo "  ←/→          - Switch tabs"
 echo "  Enter        - Open / Edit"
 echo "  Space        - Select"
 echo "  Ctrl+Enter   - Go to parent"

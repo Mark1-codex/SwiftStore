@@ -25,7 +25,8 @@ After installation, launch it anytime with:
 # Hotkeys
 
 Key           Action  
-↑ / ↓         Navigate  
+↑ / ↓         Navigate
+← / →         Switch tabs  
 Enter         Open folder / edit file  
 Space         Toggle multi-selection / select multiple items  
 Ctrl+Enter    Go to parent directory  
