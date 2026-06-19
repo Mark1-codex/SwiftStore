@@ -8,7 +8,6 @@ try:
     
     import termios
     import pwd
-    import cv2
 
     sf = Path.home()
     sfi = os.listdir(sf)

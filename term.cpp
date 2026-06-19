@@ -6,7 +6,7 @@
 int main() {
     char hostname[256] = {0};
     gethostname(hostname, sizeof(hostname));
-    std::cout << "SwiftStore v1.1 terminal.\nType 'exit' or 'quit' to quit.\n\n";
+    std::cout << "SwiftStore v1.1 terminal.\nType ';exit' or ';quit' to quit.\n\n";
     while (true) {
         std::string cmd;
 
@@ -18,7 +18,7 @@ int main() {
         
         std::getline(std::cin, cmd);
 
-        if (cmd == "exit" || cmd == "quit") break;
+        if (cmd == ";exit" || cmd == ";quit") break;
         if (cmd.empty()) continue;
 
         // Special handling for cd

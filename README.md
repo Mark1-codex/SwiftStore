@@ -24,10 +24,10 @@ After installation, launch it anytime with:
 
 # Hotkeys
 
-Key    Action  
-↑ / ↓  Navigate  
-Enter  Open folder / edit file  
-Space  Toggle multi-selection / select multiple items  
+Key           Action  
+↑ / ↓         Navigate  
+Enter         Open folder / edit file  
+Space         Toggle multi-selection / select multiple items  
 Ctrl+Enter    Go to parent directory  
 Ctrl+N        New file  
 Ctrl+Shift+N  New directory
@@ -35,7 +35,8 @@ Ctrl+D        Delete
 Ctrl+S        Copy  
 Ctrl+M        Move  
 Ctrl+R        Rename  
-Ctrl+F        Fuzzy search  
+Ctrl+F        Fuzzy search
+Ctrl+T        Open terminal (";exit" or ";quit" in terminal to stop the terminal)  
 Shift+Enter   Refresh   
 
 # Dependencies
@@ -51,6 +52,6 @@ Shift+Enter   Refresh
 - Launcher - /usr/bin/swiftstore  
 - App files - /opt/swiftstore  
 
-### Made with ❤️ by Mark1-codex
+### Made with ❤️ by Mark Kapkan (aka. Mark1-codex)
 Contributions welcome!  
 My email - saneswtsanes@gmail.com
