@@ -10,7 +10,6 @@ int main() {
     while (true) {
         std::string cmd;
 
-        // Get current directory
         char cwd[1024] = {0};
         getcwd(cwd, sizeof(cwd));
 

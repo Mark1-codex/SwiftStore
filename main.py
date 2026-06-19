@@ -32,7 +32,6 @@ try:
     def update(e=""):
         global citem, sf, sfi, view_start
         
-        # Refresh the directory listing and handle potential access errors
         try:
             sfi = os.listdir(sf)
         except PermissionError:
@@ -45,7 +44,6 @@ try:
             citem = sfi[0] if sfi else ""
             view_start = 0
         
-        # Navigation logic: update citem based on user input
         if e == "down" and sfi:
             idx = sfi.index(citem) if citem in sfi else -1
             citem = sfi[0] if idx == -1 or idx == len(sfi) - 1 else sfi[idx + 1]
@@ -53,7 +51,6 @@ try:
             idx = sfi.index(citem) if citem in sfi else 0
             citem = sfi[len(sfi) - 1] if idx <= 0 else sfi[idx - 1]
         
-        # Ensure citem is valid for the current list
         if not sfi:
             citem = ""
             view_start = 0
@@ -61,7 +58,6 @@ try:
             citem = sfi[0]
             view_start = 0
         else:
-            # Update view window based on current selection
             idx = sfi.index(citem)
             if idx < view_start:
                 view_start = idx
@@ -248,7 +244,8 @@ try:
         kb.unhook_all()
         time.sleep(0.2)
         clear_buffer()
-        print("==========================")
+        os.system("clear")
+        update()
         os.system("/opt/swiftstore/term")
         print("==========================")
         print("Press shift+enter to return to file browsing.")
@@ -268,6 +265,7 @@ try:
         kb.add_hotkey("ctrl+m", move)
         kb.add_hotkey("ctrl+f", search)
         kb.add_hotkey("ctrl+/", chpath)
+        kb.add_hotkey("ctrl+t", openterm)
 
     os.system("clear")
     import logo
