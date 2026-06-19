@@ -1,4 +1,3 @@
-#!/usr/bin/env python3
 import sys
 import os
 from pathlib import Path
@@ -27,7 +26,7 @@ class Tabs:
         width = self.get_width()
         print("\033[2J\033[H\033[?25l", end="")
 
-        # Tab Bar
+  
         print("=" * width)
         tab_line = ""
         for i, tab in enumerate(self.tabs):
@@ -40,7 +39,6 @@ class Tabs:
         print(tab_line)
         print("=" * width)
 
-        # Main Content
         if self.current == 0 and file_lines:
             for line in file_lines[:30]:
                 print(line[:width-2])
@@ -49,7 +47,7 @@ class Tabs:
             for line in lines[:30]:
                 print(line[:width-2])
 
-        # Status Bar
+
         status = f"Tab {self.current+1}/{len(self.tabs)} | ↑ / ↓ Navigate | ← / → Switch Tab | Shift+Enter Refresh"
         print("=" * width)
         print(status[:width])
@@ -143,7 +141,7 @@ def update(e=""):
         elif idx >= view_start + VIEWPORT_SIZE:
             view_start = idx - VIEWPORT_SIZE + 1
 
-    # File list
+
     file_lines = []
     if not sfi:
         file_lines = ["No items in this directory!"]
@@ -161,7 +159,6 @@ def update(e=""):
             else:
                 file_lines.append(f"{marker} {emoji} {item}")
 
-    # Update Info tab
     if citem:
         tabs.content["Info"] = get_info(sf / citem)
     else:
@@ -356,10 +353,10 @@ def openterm():
 if __name__ == "__main__":
     try:
         os.system("clear")
+        import logo
         print("SwiftStore - Tabbed File Manager")
-        print("Use ↑↓ to navigate • Shift+←→ to switch tabs")
+        print("Press shift+enter to begin. ")
         rehook()
-        update()
         kb.wait()
     except KeyboardInterrupt:
         print("\033[?25h")
