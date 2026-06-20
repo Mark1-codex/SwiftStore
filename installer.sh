@@ -74,7 +74,7 @@ python3 -m venv venv >/dev/null 2>&1
 source venv/bin/activate >/dev/null 2>&1
 pip install rapidfuzz keyboard >/dev/null 2>&1
 
-mkdir /usr/local/share/applications
+sudo mkdir -p /usr/local/share/applications
 
 touch /usr/bin/swiftstore >/dev/null 2>&1
 touch /usr/bin/swiftstore-uninstall >/dev/null 2>&1
@@ -109,7 +109,7 @@ Icon=/opt/vault/logo.svg
 Terminal=true
 Type=Application
 Categories=Utility;
-EOF 
+EOF
 
 sudo chmod +x /usr/bin/swiftstore >/dev/null 2>&1
 sudo chmod +x /usr/bin/swiftstore-uninstall >/dev/null 2>&1
