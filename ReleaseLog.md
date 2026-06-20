@@ -22,3 +22,11 @@ After the version 2.0, you can use included updater script. Launch it by running
 ```swiftstore-update```   
 Or if you have an older release:  
 ```sudo rm -rf /opt/swiftstore /usr/bin/swiftstore && curl -fsSL https://raw.githubusercontent.com/Mark1-codex/SwiftStore/main/installer.sh | sudo bash```
+## Version 2.0.2
+### What is new?
+In this version, I added a simple wheel to installer script.
+### How to download?
+After the version 2.0, you can use included updater script. Launch it by running:  
+```swiftstore-update```   
+Or if you have an older release:  
+```sudo rm -rf /opt/swiftstore /usr/bin/swiftstore && curl -fsSL https://raw.githubusercontent.com/Mark1-codex/SwiftStore/main/installer.sh | sudo bash```
