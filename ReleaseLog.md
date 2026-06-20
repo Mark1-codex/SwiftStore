@@ -30,3 +30,10 @@ After the version 2.0, you can use included updater script. Launch it by running
 ```swiftstore-update```   
 Or if you have an older release:  
 ```sudo rm -rf /opt/swiftstore /usr/bin/swiftstore && curl -fsSL https://raw.githubusercontent.com/Mark1-codex/SwiftStore/main/installer.sh | sudo bash```
+## Version 2.1
+### What is new?
+In this version, I added a desktop entry file and created a logo.
+### How to download?
+Assuming you have the version 2.0 or later, update the app by running:
+```swiftstore-update```
+For older versions, use the updater included above.
