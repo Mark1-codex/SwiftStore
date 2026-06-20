@@ -77,6 +77,7 @@ pip install rapidfuzz keyboard >/dev/null 2>&1
 touch /usr/bin/swiftstore >/dev/null 2>&1
 touch /usr/bin/swiftstore-uninstall >/dev/null 2>&1
 touch /usr/bin/swiftstore-update >/dev/null 2>&1
+touch /usr/local/share/applications/swiftstore.desktop
 
 sudo tee /usr/bin/swiftstore > /dev/null << 'EOF'
 #!/bin/bash
@@ -97,9 +98,21 @@ sudo rm -rf /usr/bin/swiftstore-uninstall /usr/bin/swiftstore-update /usr/bin/sw
 curl -fsSL https://raw.githubusercontent.com/Mark1-codex/SwiftStore/main/installer.sh | sudo bash
 EOF
 
+sudo tee /usr/local/share/applications/swiftstore.desktop > /dev/null << 'EOF'
+[Desktop Entry]
+Name=SwiftStore
+Comment=Launch SwiftStore file manager
+Exec=/usr/bin/swiftstore
+Icon=/opt/vault/logo.svg
+Terminal=true
+Type=Application
+Categories=Utility;
+EOF 
+
 sudo chmod +x /usr/bin/swiftstore >/dev/null 2>&1
 sudo chmod +x /usr/bin/swiftstore-uninstall >/dev/null 2>&1
 sudo chmod +x /usr/bin/swiftstore-update >/dev/null 2>&1
+sudo chmod +x /usr/local/share/applications/swiftstore.desktop
 
 if [ ! -d "$INSTALL_DIR/venv" ]; then
     kill "$SPIN_PID" >/dev/null 2>&1

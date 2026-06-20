@@ -1,0 +1,40 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 50 50" width="50" height="50">
+  <defs>
+    <linearGradient id="swiftGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#00C6FF"/>
+      <stop offset="100%" stop-color="#0072FF"/>
+    </linearGradient>
+    <linearGradient id="bagGradient" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#FFFFFF"/>
+      <stop offset="100%" stop-color="#F0F4F8"/>
+    </linearGradient>
+    <filter id="dropShadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="2" stdDeviation="2" flood-color="#003B73" flood-opacity="0.15"/>
+    </filter>
+  </defs>
+  
+  <circle cx="25" cy="25" r="25" fill="url(#swiftGradient)"/>
+  
+  <g filter="url(#dropShadow)">
+    <path d="M 16 21 
+             L 34 21 
+             L 32.5 37 
+             C 32.5 39, 31 40, 29 40 
+             L 21 40 
+             C 19 40, 17.5 39, 17.5 37 
+             Z" 
+          fill="url(#bagGradient)"/>
+          
+    <path d="M 20 21 
+             L 20 16 
+             C 20 11.5, 30 11.5, 30 16 
+             L 30 21" 
+          fill="none" 
+          stroke="#FFFFFF" 
+          stroke-width="3" 
+          stroke-linecap="round" 
+          stroke-linejoin="round"/>
+  </g>
+  
+  <circle cx="25" cy="29" r="2" fill="#0072FF"/>
+</svg>
