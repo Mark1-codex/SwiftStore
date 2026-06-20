@@ -13,3 +13,12 @@ Also included:
 ### How to download?  
 You can reinstall the file manager (```sudo rm -rf /opt/swiftstore /usr/bin/swiftstore && curl -fsSL https://raw.githubusercontent.com/Mark1-codex/SwiftStore/main/installer.sh | sudo bash```).  After updating, there will be a specific script for updating which you can access with:  
 ```swiftstore-update```.
+## Version 2.0.1
+### What is new?
+In this version, I did basic bug fixing. I got rid of "ctrl+shift+key" type of hotkeys as they are often mapped to the system shortcuts. As an alternative, I rebound that format to "shift+key", such as "shift+n" instead of "ctrl+shift+n to create folders.  
+As a second part of bug fixing, I implemented clearing buffers after prompt-based actions not to save inputs while entering a prompt.
+### How to download?
+After the version 2.0, you can use included updater script. Launch it by running:  
+```swiftstore-update```   
+Or if you have an older release:  
+```sudo rm -rf /opt/swiftstore /usr/bin/swiftstore && curl -fsSL https://raw.githubusercontent.com/Mark1-codex/SwiftStore/main/installer.sh | sudo bash```

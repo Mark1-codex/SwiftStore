@@ -31,7 +31,7 @@ Enter         Open folder / edit file
 Space         Toggle multi-selection / select multiple items  
 Ctrl+Enter    Go to parent directory  
 Ctrl+N        New file  
-Ctrl+Shift+N  New directory
+Shift+N  New directory
 Ctrl+D        Delete  
 Ctrl+S        Copy  
 Ctrl+M        Move  

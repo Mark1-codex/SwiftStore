@@ -205,7 +205,7 @@ def rehook():
     kb.add_hotkey("ctrl+enter", lambda: update("parent"))
     
     kb.add_hotkey("ctrl+n", makefile)
-    kb.add_hotkey("ctrl+shift+n", makefolder)
+    kb.add_hotkey("shift+n", makefolder)
     kb.add_hotkey("ctrl+d", delete_item)
     kb.add_hotkey("ctrl+s", copy)
     kb.add_hotkey("ctrl+m", move)
@@ -258,6 +258,7 @@ def makefile():
     filename = input('New file name: ')
     new_path = sf / filename
     new_path.touch()
+    clear_buffer()
     rehook()
     update()
 
@@ -270,6 +271,7 @@ def makefolder():
     foldername = input('New folder name: ')
     new_path = sf / foldername
     os.mkdir(new_path)
+    clear_buffer()
     rehook()
     update()
 
@@ -284,6 +286,7 @@ def copy():
     for item in items:
         os.system(f"cp -r '{sf / item}' '{dest}'")
     selected_items.clear()
+    clear_buffer()
     rehook()
     update()
 
@@ -298,6 +301,7 @@ def move():
     for item in items:
         os.system(f"mv '{sf / item}' '{dest}'")
     selected_items.clear()
+    clear_buffer()
     rehook()
     update()
 
@@ -312,6 +316,7 @@ def rename():
     new = sf / newname
     os.rename(old, new)
     citem = newname
+    clear_buffer()
     rehook()
     update()
 
@@ -324,6 +329,7 @@ def search():
     results = [f for f in os.listdir(sf) if query.lower() in f.lower()]
     print("Results:", results)
     input("Press Enter to return...")
+    clear_buffer()
     rehook()
     update()
 
@@ -336,6 +342,7 @@ def chpath():
     path = input("Enter path: ")
     if os.path.isdir(path):
         sf = Path(path)
+    clear_buffer()
     rehook()
     update()
 
@@ -345,6 +352,7 @@ def openterm():
     clear_buffer()
     os.system("clear")
     os.system("/opt/swiftstore/term" if os.path.exists("/opt/swiftstore/term") else "bash")
+    clear_buffer()
     rehook()
     update()
 
