@@ -74,10 +74,12 @@ python3 -m venv venv >/dev/null 2>&1
 source venv/bin/activate >/dev/null 2>&1
 pip install rapidfuzz keyboard >/dev/null 2>&1
 
+mkdir /usr/local/share/applications
+
 touch /usr/bin/swiftstore >/dev/null 2>&1
 touch /usr/bin/swiftstore-uninstall >/dev/null 2>&1
 touch /usr/bin/swiftstore-update >/dev/null 2>&1
-touch /usr/local/share/applications/swiftstore.desktop
+touch /usr/local/share/applications/swiftstore.desktop 2>&1
 
 sudo tee /usr/bin/swiftstore > /dev/null << 'EOF'
 #!/bin/bash
