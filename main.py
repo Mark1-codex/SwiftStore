@@ -78,7 +78,7 @@ def get_info(item_path: Path) -> list:
     try:
         stat = item_path.stat()
         info = [
-            "-" * 50
+            "-" * 50,
             f"Name: {item_path.name}",
             f"Full Path: {item_path}",
             f"Type: {'Directory' if item_path.is_dir() else 'File'}",
