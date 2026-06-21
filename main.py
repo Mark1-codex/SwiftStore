@@ -26,6 +26,7 @@ class Tabs:
             return 80
 
     def draw(self, file_lines=None):
+        global sf
         width = self.get_width()
         console = Console()
 
@@ -41,10 +42,9 @@ class Tabs:
                 tab_line += " | "
         print(tab_line)
 
-        # Clean file lines group (what you asked for)
         if self.current == 0 and file_lines:
             file_group = Group(*[line[:width-2] for line in file_lines[:30]])
-            console.print(Panel(file_group, title="Files", padding=(0, 1)))
+            console.print(Panel(file_group, title=str(sf), padding=(0, 1)))
         else:
             lines = self.content[self.tabs[self.current]]
             for line in lines[:30]:
@@ -78,13 +78,11 @@ def get_info(item_path: Path) -> list:
     try:
         stat = item_path.stat()
         info = [
-            "-" * 50,
             f"Name: {item_path.name}",
             f"Full Path: {item_path}",
             f"Type: {'Directory' if item_path.is_dir() else 'File'}",
             f"Size: {stat.st_size / 1024:.2f} KB",
-            f"Modified: {time.ctime(stat.st_mtime)}",
-            "-" * 50
+            f"Modified: {time.ctime(stat.st_mtime)}"
         ]
         if item_path.is_dir():
             try:
@@ -92,7 +90,13 @@ def get_info(item_path: Path) -> list:
                 info.append(f"Contains: {count} items")
             except:
                 info.append("Cannot read directory")
-        return info
+        
+        # Wrap the list of strings in a Group and then a Panel
+        info_group = Group(*info)
+        panel = Panel(info_group, title=f"Info about {str(item_path)}", padding=(0, 1))
+        # Return it inside a list since tabs.content["Info"] expects an iterable of lines/renderables
+        return [panel]
+        
     except Exception as e:
         return [f"Error: {e}"]
 
