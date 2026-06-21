@@ -44,7 +44,7 @@ class Tabs:
         # Clean file lines group (what you asked for)
         if self.current == 0 and file_lines:
             file_group = Group(*[line[:width-2] for line in file_lines[:30]])
-            console.print(Panel(file_group, title="Files", border_style="blue", padding=(0, 1)))
+            console.print(Panel(file_group, title="Files", padding=(0, 1)))
         else:
             lines = self.content[self.tabs[self.current]]
             for line in lines[:30]:
