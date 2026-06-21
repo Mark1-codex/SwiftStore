@@ -37,3 +37,11 @@ In this version, I added a desktop entry file and created a logo.
 Assuming you have the version 2.0 or later, update the app by running:
 ```swiftstore-update```
 For older versions, use the updater included above.
+## Version 2.2
+### What is new?
+In this version, I rebound shortcuts that contain enter to contain alt as a replacement. I did it in the purpose of bugfixing.  
+I also got rid of the = dividers and replaced them with the rich module for more eye candy.  
+### How to download?
+Assuming you have the version 2.0 or later, update the app by running:
+```swiftstore-update```
+For older versions, use the updater included above.

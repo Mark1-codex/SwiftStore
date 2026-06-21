@@ -5,8 +5,11 @@ import keyboard as kb
 import time
 import shutil
 import termios
+import rich
+from rich.console import Console, Group
+from rich.panel import Panel
 
-
+console = Console()
 class Tabs:
     def __init__(self):
         self.tabs = ["Files", "Info"]
@@ -24,10 +27,10 @@ class Tabs:
 
     def draw(self, file_lines=None):
         width = self.get_width()
+        console = Console()
+
         print("\033[2J\033[H\033[?25l", end="")
 
-  
-        print("=" * width)
         tab_line = ""
         for i, tab in enumerate(self.tabs):
             if i == self.current:
@@ -37,22 +40,19 @@ class Tabs:
             if i < len(self.tabs) - 1:
                 tab_line += " | "
         print(tab_line)
-        print("=" * width)
 
+        # Clean file lines group (what you asked for)
         if self.current == 0 and file_lines:
-            for line in file_lines[:30]:
-                print(line[:width-2])
+            file_group = Group(*[line[:width-2] for line in file_lines[:30]])
+            console.print(Panel(file_group, title="Files", border_style="blue", padding=(0, 1)))
         else:
             lines = self.content[self.tabs[self.current]]
             for line in lines[:30]:
                 print(line[:width-2])
 
-
         status = f"Tab {self.current+1}/{len(self.tabs)} | ↑ / ↓ Navigate | ← / → Switch Tab | Shift+Enter Refresh"
-        print("=" * width)
         print(status[:width])
         sys.stdout.flush()
-
 
 
 sf = Path.home()
@@ -78,6 +78,7 @@ def get_info(item_path: Path) -> list:
     try:
         stat = item_path.stat()
         info = [
+            "-" * 50
             f"Name: {item_path.name}",
             f"Full Path: {item_path}",
             f"Type: {'Directory' if item_path.is_dir() else 'File'}",
@@ -199,10 +200,10 @@ def rehook():
     kb.add_hotkey("right", righthandler)
     kb.add_hotkey("left",  lefthandler)
     
-    kb.add_hotkey("shift+enter", lambda: update())
-    kb.add_hotkey("enter", enter)
+    kb.add_hotkey("shift+alt", lambda: update())
+    kb.add_hotkey("alt", enter)
     kb.add_hotkey("space", toggle_select)
-    kb.add_hotkey("ctrl+enter", lambda: update("parent"))
+    kb.add_hotkey("ctrl+alt", lambda: update("parent"))
     
     kb.add_hotkey("ctrl+n", makefile)
     kb.add_hotkey("shift+n", makefolder)
@@ -363,7 +364,7 @@ if __name__ == "__main__":
         os.system("clear")
         import logo
         print("SwiftStore - Tabbed File Manager")
-        print("Press shift+enter to begin. ")
+        print("Press shift+alt to begin. ")
         rehook()
         kb.wait()
     except KeyboardInterrupt:

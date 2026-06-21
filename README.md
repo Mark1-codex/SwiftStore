@@ -27,9 +27,9 @@ After installation, launch it anytime with:
 Key           Action  
 ↑ / ↓         Navigate
 ← / →         Switch tabs  
-Enter         Open folder / edit file  
+Alt           Open folder / edit file  
 Space         Toggle multi-selection / select multiple items  
-Ctrl+Enter    Go to parent directory  
+Ctrl+Alt    Go to parent directory  
 Ctrl+N        New file  
 Shift+N  New directory
 Ctrl+D        Delete  

@@ -72,7 +72,7 @@ fi
 
 python3 -m venv venv >/dev/null 2>&1
 source venv/bin/activate >/dev/null 2>&1
-pip install rapidfuzz keyboard >/dev/null 2>&1
+pip install rapidfuzz keyboard rich >/dev/null 2>&1
 
 sudo mkdir -p /usr/local/share/applications
 
@@ -149,9 +149,9 @@ echo ""
 echo "Hotkeys:"
 echo "  ↑/↓          - Navigate"
 echo "  ←/→          - Switch tabs"
-echo "  Enter        - Open / Edit"
+echo "  Alt          - Open / Edit"
 echo "  Space        - Select"
-echo "  Ctrl+Enter   - Go to parent"
+echo "  Ctrl+Alt     - Go to parent"
 echo "  Ctrl+N       - New file"
 echo "  Shift+N      - New folder"
 echo "  Ctrl+D       - Delete"
