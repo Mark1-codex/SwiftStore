@@ -48,7 +48,10 @@ class Tabs:
         else:
             lines = self.content[self.tabs[self.current]]
             for line in lines[:30]:
-                print(line[:width-2])
+                if isinstance(line, Panel):
+                    console.print(line)
+                else:
+                    print(str(line)[:width-2])
 
         status = f"Tab {self.current+1}/{len(self.tabs)} | ↑ / ↓ Navigate | ← / → Switch Tab | Shift+Enter Refresh"
         print(status[:width])
@@ -91,10 +94,8 @@ def get_info(item_path: Path) -> list:
             except:
                 info.append("Cannot read directory")
         
-        # Wrap the list of strings in a Group and then a Panel
         info_group = Group(*info)
         panel = Panel(info_group, title=f"Info about {str(item_path)}", padding=(0, 1))
-        # Return it inside a list since tabs.content["Info"] expects an iterable of lines/renderables
         return [panel]
         
     except Exception as e:
@@ -174,25 +175,23 @@ def update(e=""):
 
 def goup():
     update("up")
-    os.system("clear")
     update("down")
+    os.system("clear")
     update("up")
 
 def godown():
     update("down")
-    os.system("clear")
     update("up")
+    os.system("clear")
     update("down")
 
 def righthandler():
-    setattr(tabs, 'current', (tabs.current + 2) % len(tabs.tabs)), update()
-    os.system("clear")
-    setattr(tabs, 'current', (tabs.current - 1) % len(tabs.tabs)), update()
+    tabs.current = (tabs.current + 1) % len(tabs.tabs)
+    update()
 
 def lefthandler():
-    setattr(tabs, 'current', (tabs.current - 2) % len(tabs.tabs)), update()
-    os.system("clear")
-    setattr(tabs, 'current', (tabs.current + 1) % len(tabs.tabs)), update()
+    tabs.current = (tabs.current - 1) % len(tabs.tabs)
+    update()
 
 def rehook():
     kb.unhook_all()
